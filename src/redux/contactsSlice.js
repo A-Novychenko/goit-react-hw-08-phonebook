@@ -47,7 +47,6 @@ const contactsSlice = createSlice({
         isAnyOf(...extraActions.map(action => action.rejected)),
         (state, { payload }) => {
           state.isLoading = false;
-          console.log('payload', payload);
           state.error = payload;
         }
       ),
