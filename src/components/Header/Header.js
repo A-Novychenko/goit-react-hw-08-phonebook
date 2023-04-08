@@ -32,7 +32,7 @@ export const Header = () => {
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Navigation />
             {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
-            {true ? <UserMenu /> : <AuthNav />}
+            {false ? <UserMenu /> : <AuthNav />}
           </Box>
         </Container>
       </AppBar>
