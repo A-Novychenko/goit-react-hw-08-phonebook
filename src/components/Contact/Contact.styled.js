@@ -5,8 +5,8 @@ export const Name = styled.p`
 `;
 
 export const Inner = styled.div`
-  display: flex;
-  gap: 8px;
+  /* display: flex;
+  gap: 8px; */
 `;
 
 export const Remove = styled.button`

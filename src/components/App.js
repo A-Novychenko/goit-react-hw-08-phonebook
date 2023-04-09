@@ -7,6 +7,9 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from 'pages/Home';
 import { Layout } from 'components/Layout';
+import { Login } from 'pages/Login';
+import { Register } from 'pages/Register';
+import { ContactList } from './ContactList';
 
 export const App = () => (
   <>
@@ -16,6 +19,8 @@ export const App = () => (
         <Route index element={<Home />} />
         <Route
           path="/register"
+          element={<Register />}
+
           // element={
           //   <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />}
           // />
@@ -23,12 +28,14 @@ export const App = () => (
         />
         <Route
           path="/login"
+          element={<Login />}
           // element={
           //   <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
           // }
         />
         <Route
-          path="/tasks"
+          path="/contacts"
+          element={<ContactList />}
           // element={
           //   <PrivateRoute redirectTo="/login" component={<TasksPage />} />
           // }

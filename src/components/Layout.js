@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
 // import { Toaster } from 'react-hot-toast';
-import { Header } from './Header';
+import { AppBar } from './AppBar';
 import { Suspense } from 'react';
 
 export const Layout = () => {
   return (
     <>
-      <Header />
+      <AppBar />
       <div
         style={{
           maxWidth: 960,

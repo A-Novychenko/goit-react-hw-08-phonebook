@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -9,7 +10,12 @@ export default function Home() {
         securely. Register to create your collection of phone numbers.
       </p>
       <br />
-      <Button variant="contained" style={{ marginTop: '40px' }}>
+      <Button
+        component={RouterNavLink}
+        variant="contained"
+        style={{ marginTop: '40px' }}
+        to="/login"
+      >
         Get started
       </Button>
     </div>

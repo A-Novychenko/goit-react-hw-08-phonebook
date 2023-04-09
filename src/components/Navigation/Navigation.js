@@ -10,14 +10,14 @@ export const Navigation = () => {
   return (
     <Box component={'nav'}>
       <Toolbar sx={{}}>
-        <Button component={RouterNavLink} variant="outline">
+        <Button component={RouterNavLink} variant="outline" to="/">
           <ContactPhone sx={{ mr: 2 }} />
           <Typography variant="h6" component="p" sx={{ textTransform: 'none' }}>
             Phonebook
           </Typography>
         </Button>
 
-        {false && (
+        {true && (
           <Button component={RouterNavLink} to="/contacts" variant="outline">
             <Typography
               variant="h6"

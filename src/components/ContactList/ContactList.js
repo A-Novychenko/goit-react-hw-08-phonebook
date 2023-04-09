@@ -9,6 +9,7 @@ import {
   selectIsLoading,
   selectedVisibleContacts,
 } from 'redux/selectors';
+// import { Stack } from '@mui/material';
 
 export const ContactList = () => {
   const visibleContacts = useSelector(selectedVisibleContacts);
@@ -27,6 +28,14 @@ export const ContactList = () => {
         {isLoading && <p>Loading tasks...</p>}
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
+
+      {/* <Stack spacing={2} component={'ul'}>
+        {visibleContacts.map(({ name, id, phone }) => (
+          <Item key={id}>
+            <Contact name={name} phone={phone} id={id}></Contact>
+          </Item>
+        ))}
+      </Stack> */}
 
       <List>
         {visibleContacts.map(({ name, id, phone }) => (

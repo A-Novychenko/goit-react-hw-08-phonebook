@@ -1,31 +1,41 @@
-// import { ContactForm } from 'components/ContactForm';
-// import { GlobalStyle } from 'constants/GlobalStyles';
-// import { ContactList } from 'components/ContactList';
-// import { Filter } from 'components/Filter';
-// import {
-//   Container,
-//   Wrap,
-// //   MainTitle,
-// //   Title,
-// //   StyleArround,
-// // } from './AppBar.styled';
-// import { Header } from 'components/Header/Header';
+// import AppBar from '@mui/material/AppBar';
+// import Box from '@mui/material/Box';
+// import Toolbar from '@mui/material/Toolbar';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
+// import IconButton from '@mui/material/IconButton';
 
-// export const AppBar = () => (
-//   <>
-//     <Header />
+// import { ContactPhone } from '@mui/icons-material';
+import {
+  AppBar as AppBarContainer,
+  Box,
+  //   Toolbar,
+  //   Typography,
+  //   Button,
+  //   IconButton,
+  Container,
+  //   Link,
+} from '@mui/material';
+import { AuthNav } from 'components/AuthNav/AuthNav';
+import { Navigation } from 'components/Navigation/Navigation';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+// import { NavLink } from 'react-router-dom';
 
-//     {/* <Container>
-//       <Wrap>
-//         <MainTitle>Phonebook</MainTitle>
-//         <ContactForm />
+// import MenuIcon from '@mui/icons-material/Menu';
 
-//         <Title>Contacts</Title>
-//         <Filter />
-//         <ContactList />
-//       </Wrap>
-//       <StyleArround />
-
-//     </Container> */}
-//   </>
-// );
+export const AppBar = () => {
+  return (
+    <Box component={'header'}>
+      {/* <Box sx={{ flexGrow: 1 }} component={'header'}> */}
+      <AppBarContainer position="static">
+        <Container maxWidth="xl">
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Navigation />
+            {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
+            {true ? <UserMenu /> : <AuthNav />}
+          </Box>
+        </Container>
+      </AppBarContainer>
+    </Box>
+  );
+};
