@@ -7,7 +7,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from 'pages/Home';
 import { Layout } from 'components/Layout';
-import { LoginTTT } from 'pages/Login';
+import { LoginTTT } from 'pages/LoginTTT';
 import { Register } from 'pages/Register';
 import { ContactList } from './ContactList';
 
