@@ -1,11 +1,9 @@
 import { ContactList } from 'components/ContactList';
 
-const Contacts = () => {
+export default function Contacts() {
   return (
     <div>
       <ContactList />
     </div>
   );
-};
-
-export default Contacts;
+}
