@@ -7,7 +7,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from 'pages/Home';
 import { Layout } from 'components/Layout';
-import { Login } from 'pages/Login';
+import { LoginTTT } from 'pages/Login';
 import { Register } from 'pages/Register';
 import { ContactList } from './ContactList';
 
@@ -28,7 +28,7 @@ export const App = () => (
         />
         <Route
           path="/login"
-          element={<Login />}
+          element={<LoginTTT />}
           // element={
           //   <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
           // }
