@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import { Contact } from 'components/Contact';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 import {
   selectError,
   selectIsLoading,
   selectedVisibleContacts,
-} from 'redux/selectors';
+} from 'redux/contacts/contactsSelectors';
 
 export const ContactList = () => {
   const visibleContacts = useSelector(selectedVisibleContacts);

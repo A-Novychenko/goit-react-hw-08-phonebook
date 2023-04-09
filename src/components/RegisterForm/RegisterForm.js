@@ -9,15 +9,28 @@ import {
 } from '@mui/material';
 
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/authOperations';
 
 export const RegisterForm = () => {
-  const handleSubmit = event => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+    };
+    dispatch(register(data));
+    // e.target.reset();
+    console.log('data', data);
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
   };
 
   return (
@@ -48,9 +61,9 @@ export const RegisterForm = () => {
               margin="normal"
               required
               fullWidth
-              id="userName"
+              id="name"
               label="User name"
-              name="userName"
+              name="name"
               autoComplete="userName"
               autoFocus
             />

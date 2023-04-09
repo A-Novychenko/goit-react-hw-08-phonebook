@@ -5,7 +5,7 @@ import { Typography, IconButton, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 
 export const Contact = ({ name, phone, id }) => {
   const [isBtnActive, setIsBtnActive] = useState(false);

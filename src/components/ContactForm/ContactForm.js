@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
 import 'yup-phone-lite';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/contactsOperations';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { useFormik } from 'formik';
 
 import { Avatar, Button, TextField, Box, Typography } from '@mui/material';

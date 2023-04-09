@@ -17,7 +17,7 @@ export const Navigation = () => {
           </Typography>
         </Button>
 
-        {true && (
+        {false && (
           <Button component={RouterNavLink} to="/contacts" variant="outline">
             <Typography
               variant="h6"
