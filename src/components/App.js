@@ -17,41 +17,42 @@ const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
-export const App = () => (
-  <>
-    {/* <Header /> */}
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
+export const App = () => {
+  return (
+    <>
+      {/* <Header /> */}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
 
-        <Route
-          path="register"
-          element={<RegisterPage />}
+          <Route
+            path="register"
+            element={<RegisterPage />}
 
-          // element={
-          //   <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />}
-          // />
-          // }
-        />
+            // element={
+            //   <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />}
+            // />
+            // }
+          />
 
-        <Route
-          path="login"
-          element={<LoginPage />}
-          // element={
-          //   <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
-          // }
-        />
+          <Route
+            path="login"
+            element={<LoginPage />}
+            // element={
+            //   <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+            // }
+          />
 
-        <Route
-          path="contacts"
-          element={<ContactsPage />}
-          // element={
-          //   <PrivateRoute redirectTo="/login" component={<TasksPage />} />
-          // }
-        />
-      </Route>
-    </Routes>
-    {/* <Container>
+          <Route
+            path="contacts"
+            element={<ContactsPage />}
+            // element={
+            //   <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+            // }
+          />
+        </Route>
+      </Routes>
+      {/* <Container>
       <Wrap>
         <MainTitle>Phonebook</MainTitle>
         <ContactForm />
@@ -63,5 +64,6 @@ export const App = () => (
       <StyleArround />
       <GlobalStyle></GlobalStyle>
     </Container> */}
-  </>
-);
+    </>
+  );
+};
