@@ -46,7 +46,7 @@ export const LoginForm = () => {
   return (
     // <ThemeProvider theme={theme}>
     <>
-      <Container component="main" maxWidth="xs">
+      <Container component="div" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -59,7 +59,7 @@ export const LoginForm = () => {
           <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
             <LoginIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h2" variant="h5">
             Log in
           </Typography>
           <Box
