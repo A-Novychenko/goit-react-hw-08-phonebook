@@ -22,7 +22,7 @@ export const RegisterForm = () => {
 
   return (
     <>
-      <Container component="main" maxWidth="xs">
+      <Container component="div" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -35,7 +35,7 @@ export const RegisterForm = () => {
           <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
             <HowToRegIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h2" variant="h5">
             Register
           </Typography>
           <Box
