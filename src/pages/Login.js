@@ -1,9 +1,10 @@
 import { LoginForm } from 'components/LoginForm';
-
-export const LoginTTT = () => {
+const Login = () => {
   return (
     <div>
       <LoginForm />
     </div>
   );
 };
+
+export default Login;

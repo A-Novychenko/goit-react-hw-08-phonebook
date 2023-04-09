@@ -4,22 +4,28 @@
 // import { Filter } from 'components/Filter';
 // import { Container, Wrap, MainTitle, Title, StyleArround } from './AppBar';
 // import { Header } from 'components/Header/Header';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from 'pages/Home';
+// import Home from 'pages/Home';
 import { Layout } from 'components/Layout';
-import { LoginTTT } from 'pages/LoginTTT';
-import { Register } from 'pages/Register';
-import { ContactList } from './ContactList';
+// import Login as LoginPage from 'pages/LoginTTT';
+// import { Register } from 'pages/Register';
+// import { ContactList } from './ContactList';
+
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => (
   <>
     {/* <Header /> */}
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<HomePage />} />
         <Route
           path="/register"
-          element={<Register />}
+          element={<RegisterPage />}
 
           // element={
           //   <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />}
@@ -28,14 +34,14 @@ export const App = () => (
         />
         <Route
           path="/login"
-          element={<LoginTTT />}
+          element={<LoginPage />}
           // element={
           //   <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
           // }
         />
         <Route
           path="/contacts"
-          element={<ContactList />}
+          element={<ContactsPage />}
           // element={
           //   <PrivateRoute redirectTo="/login" component={<TasksPage />} />
           // }
