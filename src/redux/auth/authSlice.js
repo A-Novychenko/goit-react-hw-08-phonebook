@@ -1,16 +1,19 @@
 // import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, register } from './authOperations';
+import { logIn, register, logOut } from './authOperations';
 
-// const extraActions = [register,logIn];
+// const extraActions = [register,logIn,logOut];
+
+const initialState = {
+  user: { name: null, email: null },
+  token: null,
+  isLoggedIn: false,
+};
 
 const authSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    user: { name: null, email: null },
-    token: null,
-    isLoggedIn: false,
-  },
+  initialState,
+
   extraReducers: builder =>
     builder
       .addCase(register.fulfilled, (state, { payload: { user, token } }) => {
@@ -22,7 +25,8 @@ const authSlice = createSlice({
         state.user = user;
         state.token = token;
         state.isLoggedIn = true;
-      }),
+      })
+      .addCase(logOut.fulfilled, () => initialState),
 
   //   .addMatcher(
   //     isAnyOf(...extraActions.map(action => action.fulfilled)),
@@ -34,53 +38,3 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-// const contactsSlice = createSlice({
-//   name: 'contacts',
-//   initialState: {
-//     items: [],
-//     isLoading: false,
-//     error: null,
-//   },
-//   extraReducers: builder =>
-//     builder
-//       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
-//         state.isLoading = false;
-//         state.error = null;
-//         state.items = payload;
-//       })
-//       .addCase(addContact.fulfilled, (state, { payload }) => {
-//         state.isLoading = false;
-//         state.error = null;
-//         state.items.push(payload);
-//       })
-//       .addCase(deleteContact.fulfilled, (state, { payload }) => {
-//         state.isLoading = false;
-//         state.error = null;
-//         state.items.splice(
-//           state.items.findIndex(contact => contact.id === payload.id),
-//           1
-//         );
-//       })
-//       .addMatcher(
-//         isAnyOf(...extraActions.map(action => action.fulfilled)),
-//         state => {
-//           state.isLoading = false;
-//           state.error = null;
-//         }
-//       )
-//       .addMatcher(
-//         isAnyOf(...extraActions.map(action => action.pending)),
-//         state => {
-//           state.isLoading = true;
-//         }
-//       )
-//       .addMatcher(
-//         isAnyOf(...extraActions.map(action => action.rejected)),
-//         (state, { payload }) => {
-//           state.isLoading = false;
-//           state.error = payload;
-//         }
-//       ),
-// });
-
-// export const contactsReducer = contactsSlice.reducer;
