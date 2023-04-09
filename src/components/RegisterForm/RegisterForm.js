@@ -26,11 +26,6 @@ export const RegisterForm = () => {
     };
     dispatch(register(data));
     // e.target.reset();
-    console.log('data', data);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
   };
 
   return (

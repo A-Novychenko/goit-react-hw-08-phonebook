@@ -1,50 +1,40 @@
-// import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
-// import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Box,
+  Typography,
+  Container,
+} from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-// function Copyright(props) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Phonebook
-//       </Link>
-//       {new Date().getFullYear()}
-//     </Typography>
-//   );
-// }
-
-// const theme = createTheme();
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/authOperations';
 
 export const LoginForm = () => {
-  const handleSubmit = event => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
 
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const data = {
+      email: formData.get('email'),
+      password: formData.get('password'),
+    };
+    dispatch(logIn(data));
+    // e.target.reset();
+  };
   return (
-    // <ThemeProvider theme={theme}>
     <>
       <Container component="div" maxWidth="xs">
         <CssBaseline />
@@ -68,6 +58,7 @@ export const LoginForm = () => {
             noValidate
             sx={{ mt: 1 }}
           >
+            <p>Novik@mail.com</p>
             <TextField
               margin="normal"
               required
@@ -78,6 +69,7 @@ export const LoginForm = () => {
               autoComplete="email"
               autoFocus
             />
+            <p>Novik777</p>
             <TextField
               margin="normal"
               required
@@ -88,10 +80,6 @@ export const LoginForm = () => {
               id="password"
               autoComplete="current-password"
             />
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
             <Button
               type="submit"
               fullWidth
@@ -100,23 +88,9 @@ export const LoginForm = () => {
             >
               Log in
             </Button>
-            {/* <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid> */}
           </Box>
         </Box>
-        {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
-      {/* </ThemeProvider> */}
     </>
   );
 };

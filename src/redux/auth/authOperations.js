@@ -8,7 +8,19 @@ export const register = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const resp = await axios.post('/users/signup', credentials);
-      console.log('resp.data', resp.data);
+
+      return resp.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+export const logIn = createAsyncThunk(
+  'auth/logIn',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const resp = await axios.post('/users/login', credentials);
+
       return resp.data;
     } catch (err) {
       return rejectWithValue(err.message);

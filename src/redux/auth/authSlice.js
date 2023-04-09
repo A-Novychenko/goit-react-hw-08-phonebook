@@ -1,8 +1,8 @@
 // import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { register } from './authOperations';
+import { logIn, register } from './authOperations';
 
-// const extraActions = [register];
+// const extraActions = [register,logIn];
 
 const authSlice = createSlice({
   name: 'contacts',
@@ -12,12 +12,17 @@ const authSlice = createSlice({
     isLoggedIn: false,
   },
   extraReducers: builder =>
-    builder.addCase(register.fulfilled, (state, { payload }) => {
-      console.log('payload', payload);
-      state.user = { ...payload.user };
-      state.token = null;
-      state.isLoggedIn = payload;
-    }),
+    builder
+      .addCase(register.fulfilled, (state, { payload: { user, token } }) => {
+        state.user = user;
+        state.token = token;
+        state.isLoggedIn = true;
+      })
+      .addCase(logIn.fulfilled, (state, { payload: { user, token } }) => {
+        state.user = user;
+        state.token = token;
+        state.isLoggedIn = true;
+      }),
 
   //   .addMatcher(
   //     isAnyOf(...extraActions.map(action => action.fulfilled)),
