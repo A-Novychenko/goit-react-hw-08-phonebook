@@ -8,12 +8,12 @@ export const Layout = () => {
     <>
       <AppBar />
       <div
-        style={{
-          maxWidth: 960,
-          margin: '300px auto',
-          padding: '0 16px',
-          textAlign: 'center',
-        }}
+      // style={{
+      //   maxWidth: 960,
+      //   margin: '300px auto',
+      //   padding: '0 16px',
+      //   textAlign: 'center',
+      // }}
       >
         <Suspense fallback={null}>
           <Outlet />
