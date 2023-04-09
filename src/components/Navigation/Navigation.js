@@ -1,11 +1,11 @@
 import { Box, Button, Toolbar, Typography } from '@mui/material';
 import { NavLink as RouterNavLink } from 'react-router-dom';
-// import { useAuth } from 'hooks';
-// import css from './Navigation.module.css';
+import { useAuth } from 'hooks';
+
 import { ContactPhone } from '@mui/icons-material';
 
 export const Navigation = () => {
-  //   const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <Box component={'nav'}>
@@ -17,7 +17,7 @@ export const Navigation = () => {
           </Typography>
         </Button>
 
-        {false && (
+        {isLoggedIn && (
           <Button component={RouterNavLink} to="/contacts" variant="outline">
             <Typography
               variant="h6"

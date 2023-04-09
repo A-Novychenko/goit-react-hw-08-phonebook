@@ -1,7 +1,7 @@
-const selectIsLoggedIn = state => state.auth.isLoggedIn;
-const selectUsername = state => state.auth.user.name;
+export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+export const selectUser = state => state.auth.user;
 
 export const selectAuthSelectors = {
   selectIsLoggedIn,
-  selectUsername,
+  selectUser,
 };
