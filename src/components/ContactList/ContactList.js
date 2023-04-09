@@ -1,15 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-
-import { Contact } from 'components/Contact';
-import { List, Item } from './ContactList.styled';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Box } from '@mui/material';
+import { Contact } from 'components/Contact';
 import { fetchContacts } from 'redux/operations';
 import {
   selectError,
   selectIsLoading,
   selectedVisibleContacts,
 } from 'redux/selectors';
-// import { Stack } from '@mui/material';
 
 export const ContactList = () => {
   const visibleContacts = useSelector(selectedVisibleContacts);
@@ -29,21 +27,28 @@ export const ContactList = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
 
-      {/* <Stack spacing={2} component={'ul'}>
+      <Box
+        component={'ul'}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 1,
+        }}
+      >
         {visibleContacts.map(({ name, id, phone }) => (
-          <Item key={id}>
+          <Box
+            component={'li'}
+            key={id}
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             <Contact name={name} phone={phone} id={id}></Contact>
-          </Item>
+          </Box>
         ))}
-      </Stack> */}
-
-      <List>
-        {visibleContacts.map(({ name, id, phone }) => (
-          <Item key={id}>
-            <Contact name={name} phone={phone} id={id}></Contact>
-          </Item>
-        ))}
-      </List>
+      </Box>
     </>
   );
 };
