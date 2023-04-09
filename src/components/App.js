@@ -42,14 +42,14 @@ export const App = () => (
           // }
         />
 
-        <Route
+        {/* <Route
           path="/contacts"
           element={<ContactsPage />}
           // element={
           //   <PrivateRoute redirectTo="/login" component={<TasksPage />} />
           // }
         />
-      </Route>
+      </Route> */}
     </Routes>
     {/* <Container>
       <Wrap>
