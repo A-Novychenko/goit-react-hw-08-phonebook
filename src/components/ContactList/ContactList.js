@@ -35,7 +35,7 @@ export const ContactList = () => {
           gap: 1,
         }}
       >
-        {visibleContacts.map(({ name, id, phone }) => (
+        {visibleContacts.map(({ name, id, number }) => (
           <Box
             component={'li'}
             key={id}
@@ -45,7 +45,7 @@ export const ContactList = () => {
               alignItems: 'center',
             }}
           >
-            <Contact name={name} phone={phone} id={id}></Contact>
+            <Contact name={name} number={number} id={id}></Contact>
           </Box>
         ))}
       </Box>

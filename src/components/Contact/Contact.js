@@ -7,7 +7,7 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 import { deleteContact } from 'redux/contacts/contactsOperations';
 
-export const Contact = ({ name, phone, id }) => {
+export const Contact = ({ name, number, id }) => {
   const [isBtnActive, setIsBtnActive] = useState(false);
   const dispatch = useDispatch();
 
@@ -52,7 +52,7 @@ export const Contact = ({ name, phone, id }) => {
             borderLeft: '1px solid grey',
           }}
         >
-          <Typography sx={{ textAlign: 'center' }}>{phone}</Typography>
+          <Typography sx={{ textAlign: 'center' }}>{number}</Typography>
         </Box>
 
         <IconButton
@@ -72,6 +72,6 @@ export const Contact = ({ name, phone, id }) => {
 
 Contact.propTypes = {
   id: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };

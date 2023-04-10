@@ -10,12 +10,12 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 const INITIAL_STATE = {
   name: '',
-  phone: '+38',
+  number: '+38',
 };
 
 const Schema = Yup.object({
   name: Yup.string().max(20, 'Max: 20 symbols').required(),
-  phone: Yup.string()
+  number: Yup.string()
     .phone('UK', 'Please enter a valid phone number in the format for UKRAINE')
     .required('A phone number is required'),
 });
@@ -28,12 +28,12 @@ export const ContactForm = () => {
     initialValues: { ...INITIAL_STATE },
     validationSchema: Schema,
     onSubmit: (values, { resetForm }) => {
-      const { name, phone } = values;
+      const { name, number } = values;
 
       if (contacts.length) {
         const isInConntacts =
           contacts.find(contact => contact.name === name) ||
-          contacts.find(contact => contact.phone === phone);
+          contacts.find(contact => contact.number === number);
 
         if (isInConntacts) {
           alert(`${name} is already in contacts.`);
@@ -82,15 +82,15 @@ export const ContactForm = () => {
           <TextField
             margin="normal"
             fullWidth
-            id="phone"
-            name="phone"
+            id="number"
+            name="number"
             label="Phone"
             type="tel"
-            autoComplete="phone"
-            value={formik.values.phone}
+            autoComplete="number"
+            value={formik.values.number}
             onChange={formik.handleChange}
-            error={formik.touched.phone && Boolean(formik.errors.phone)}
-            helperText={formik.touched.phone && formik.errors.phone}
+            error={formik.touched.number && Boolean(formik.errors.number)}
+            helperText={formik.touched.number && formik.errors.number}
           />
           <Button
             type="submit"
