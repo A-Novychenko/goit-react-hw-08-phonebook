@@ -3,21 +3,10 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
-
-// Utility to add JWT
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// Utility to remove JWT
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
@@ -27,8 +16,8 @@ export const register = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
-      // token.set(data.token);
       setAuthHeader(data.token);
+
       return data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -41,8 +30,8 @@ export const logIn = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/login', credentials);
-      // token.set(data.token);
       setAuthHeader(data.token);
+
       return data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -55,8 +44,27 @@ export const logOut = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/logout');
-      // token.unset();
       clearAuthHeader(data.token);
+
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refreshUser',
+  async (_, { getState, rejectWithValue }) => {
+    const token = getState().auth.token;
+
+    if (token === null) {
+      return rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      setAuthHeader(token);
+      const { data } = await axios.get('/users/current');
       return data;
     } catch (err) {
       return rejectWithValue(err.message);
