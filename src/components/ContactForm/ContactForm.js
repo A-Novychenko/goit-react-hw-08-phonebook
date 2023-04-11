@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contactsOperations';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { useFormik } from 'formik';
+import PropTypes from 'prop-types';
 
 import { Avatar, Button, TextField, Box, Typography } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
@@ -20,7 +21,7 @@ const Schema = Yup.object({
     .required('A phone number is required'),
 });
 
-export const ContactForm = () => {
+export const ContactForm = ({ onToggleModal }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
@@ -43,6 +44,7 @@ export const ContactForm = () => {
 
       dispatch(addContact(values));
       resetForm();
+      onToggleModal();
     },
   });
 
@@ -55,7 +57,8 @@ export const ContactForm = () => {
           flexDirection: 'column',
           alignItems: 'center',
           mx: 'auto',
-          maxWidth: 400,
+          width: 500,
+          height: 380,
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
@@ -73,12 +76,12 @@ export const ContactForm = () => {
             label="Name"
             name="name"
             autoComplete="userName"
-            autoFocus
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && Boolean(formik.errors.name)}
             helperText={formik.touched.name && formik.errors.name}
           />
+
           <TextField
             margin="normal"
             fullWidth
@@ -104,4 +107,8 @@ export const ContactForm = () => {
       </Box>
     </>
   );
+};
+
+ContactForm.propTypes = {
+  onToggleModal: PropTypes.func.isRequired,
 };
