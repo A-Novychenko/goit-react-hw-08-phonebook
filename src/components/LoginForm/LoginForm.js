@@ -49,7 +49,6 @@ export const LoginForm = () => {
             noValidate
             sx={{ mt: 1 }}
           >
-            <p>Novik@mail.com</p>
             <TextField
               margin="normal"
               required
@@ -58,9 +57,7 @@ export const LoginForm = () => {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
             />
-            <p>Novik777</p>
             <TextField
               margin="normal"
               required

@@ -23,7 +23,7 @@ export const UserMenu = () => {
         <AccountBoxIcon sx={{ mr: 1 }} />
         <Typography>Welcome, {user.name}</Typography>
       </Box>
-      {/* <button type="button" onClick={() => dispatch(logOut())}> */}
+
       <Button
         component="button"
         type="button"

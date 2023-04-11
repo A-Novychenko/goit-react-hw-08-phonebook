@@ -12,7 +12,6 @@ export const AppBar = () => {
         <Container maxWidth="xl">
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Navigation />
-
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </Box>
         </Container>

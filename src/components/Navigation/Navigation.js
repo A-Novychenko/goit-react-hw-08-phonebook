@@ -27,11 +27,6 @@ export const Navigation = () => {
               Contacts
             </Typography>
           </Button>
-
-          //   {isLoggedIn && (
-          //     <Button component={RouterNavLink} to="/contacts">
-          //       Contacts
-          //     </Button>
         )}
       </Toolbar>
     </Box>

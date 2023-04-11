@@ -59,7 +59,6 @@ export const RegisterForm = () => {
               label="User name"
               name="name"
               autoComplete="userName"
-              autoFocus
             />
             <TextField
               margin="normal"
