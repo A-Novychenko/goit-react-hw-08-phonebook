@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[266],{1266:function(e,t,o){o.r(t),o.d(t,{default:function(){return r}});var n=o(184);function r(){return(0,n.jsxs)("div",{children:[(0,n.jsx)("h1",{children:"Welcome to the phone book! "}),(0,n.jsx)("p",{style:{marginTop:40,fontSize:24},children:"This is a beautifully designed phonebook app that saves contacts securely. Register to create your collection of phone numbers."}),(0,n.jsx)("br",{})]})}}}]);
-//# sourceMappingURL=266.974705a7.chunk.js.map
