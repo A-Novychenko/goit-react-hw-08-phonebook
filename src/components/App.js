@@ -1,8 +1,8 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { Layout } from 'components/Layout';
-import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/authOperations';
 
 const HomePage = lazy(() => import('../pages/Home'));
