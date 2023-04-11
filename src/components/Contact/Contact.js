@@ -26,8 +26,8 @@ export const Contact = ({ name, number, id }) => {
           alignItems: 'center',
           width: 1,
           mx: 'auto',
-          border: '1px solid grey',
-          borderRadius: 2,
+          border: '1px solid #1976d2',
+          borderRadius: 1,
         }}
       >
         <Box
@@ -38,7 +38,7 @@ export const Contact = ({ name, number, id }) => {
             ml: 2,
           }}
         >
-          <ContactPhoneIcon sx={{ mr: 2 }} />
+          <ContactPhoneIcon sx={{ mr: 2, color: '#1976d2' }} />
           <Typography>{name}</Typography>
         </Box>
 
@@ -48,8 +48,8 @@ export const Contact = ({ name, number, id }) => {
             width: 200,
             height: '100%',
             py: 1.2,
-            borderRight: '1px solid grey',
-            borderLeft: '1px solid grey',
+            borderRight: '1px solid #1976d2',
+            borderLeft: '1px solid #1976d2',
           }}
         >
           <Typography sx={{ textAlign: 'center' }}>{number}</Typography>

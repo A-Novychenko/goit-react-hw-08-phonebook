@@ -68,14 +68,14 @@ export const ContactForm = ({ onToggleModal }) => {
           Add contact
         </Typography>
 
-        <form onSubmit={formik.handleSubmit} sx={{ mt: 1 }}>
+        <form onSubmit={formik.handleSubmit} autoComplete="off" sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             fullWidth
             id="name"
             label="Name"
             name="name"
-            autoComplete="userName"
+            // autoComplete="userName"
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && Boolean(formik.errors.name)}
@@ -89,7 +89,7 @@ export const ContactForm = ({ onToggleModal }) => {
             name="number"
             label="Phone"
             type="tel"
-            autoComplete="number"
+            // autoComplete="number"
             value={formik.values.number}
             onChange={formik.handleChange}
             error={formik.touched.number && Boolean(formik.errors.number)}

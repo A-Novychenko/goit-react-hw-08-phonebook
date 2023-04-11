@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Input } from '@mui/material';
+import { TextField } from '@mui/material';
 
 import { selectFilter } from 'redux/contacts/contactsSelectors';
 import { setFilterValue } from 'redux/contacts/filterSlice';
@@ -14,16 +14,27 @@ export const Filter = () => {
 
   return (
     <>
-      <Input
-        sx={{ display: 'block', width: 0.5, mx: 'auto', boxShadow: 1, px: 2 }}
+      <TextField
+        label="Search contact"
+        variant="filled"
+        sx={{
+          display: 'flex',
+          width: 0.5,
+          mt: 5,
+          mb: 2,
+          mx: 'auto',
+          boxShadow: 1,
+          color: '#1976d2',
+          bgcolor: 'rgba(25, 118, 210, 0.1)',
+        }}
+        autoComplete="off"
         type="text"
         name="filter"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        required
         value={filter}
         onChange={handleChange}
-        placeholder="Filter"
+        placeholder="search"
       />
     </>
   );
