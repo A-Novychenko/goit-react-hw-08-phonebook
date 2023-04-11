@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import {
   Avatar,
   Button,
@@ -7,9 +8,7 @@ import {
   Typography,
   Container,
 } from '@mui/material';
-
 import HowToRegIcon from '@mui/icons-material/HowToReg';
-import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
 
 export const RegisterForm = () => {
@@ -25,7 +24,7 @@ export const RegisterForm = () => {
       password: formData.get('password'),
     };
     dispatch(register(data));
-    // e.target.reset();
+    e.target.reset();
   };
 
   return (

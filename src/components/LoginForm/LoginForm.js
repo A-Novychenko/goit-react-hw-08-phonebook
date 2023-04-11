@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import {
   Avatar,
   Button,
@@ -8,19 +9,9 @@ import {
   Container,
 } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
-import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
 
 export const LoginForm = () => {
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
-
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -32,7 +23,7 @@ export const LoginForm = () => {
       password: formData.get('password'),
     };
     dispatch(logIn(data));
-    // e.target.reset();
+    e.target.reset();
   };
   return (
     <>

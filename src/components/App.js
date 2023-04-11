@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/authOperations';
 
 const HomePage = lazy(() => import('../pages/Home'));
-const RegisterPage = lazy(() => import('../pages/Register'));
+const RegisterPage = lazy(() => import('../pages/Registe/r'));
 const LoginPage = lazy(() => import('../pages/Login'));
 // const ContactsPage = lazy(() => import('../pages/Contacts'));
 
