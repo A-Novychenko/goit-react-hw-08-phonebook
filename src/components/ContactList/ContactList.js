@@ -8,6 +8,7 @@ import {
   selectIsLoading,
   selectedVisibleContacts,
 } from 'redux/contacts/contactsSelectors';
+import { LoaderLocal } from 'components/Loader';
 
 export const ContactList = () => {
   const visibleContacts = useSelector(selectedVisibleContacts);
@@ -23,7 +24,8 @@ export const ContactList = () => {
   return (
     <>
       <div style={{ height: '16px' }}>
-        {isLoading && <p>Loading tasks...</p>}
+        {/* {isLoading && <p>Loading tasks...</p>} */}
+        {isLoading && <LoaderLocal />}
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
 

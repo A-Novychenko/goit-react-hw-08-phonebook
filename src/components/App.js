@@ -8,6 +8,8 @@ import { useAuth } from 'hooks';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
+import { Loader } from './Loader';
+
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
@@ -22,7 +24,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader />
   ) : (
     <>
       <Routes>

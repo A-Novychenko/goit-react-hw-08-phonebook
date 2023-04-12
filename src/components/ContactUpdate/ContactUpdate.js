@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import 'yup-phone-lite';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/contactsOperations';
+import { updateContact } from 'redux/contacts/contactsOperations';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
@@ -32,8 +32,12 @@ export const ContactUpdate = ({
 
       if (contacts.length) {
         const isInConntacts =
-          contacts.find(contact => contact.name === name) ||
-          contacts.find(contact => contact.number === number);
+          contacts.find(
+            contact => contact.name === name && contact.id !== id
+          ) ||
+          contacts.find(
+            contact => contact.number === number && contact.id !== id
+          );
 
         if (isInConntacts) {
           alert(`${name} is already in contacts.`);
@@ -41,7 +45,7 @@ export const ContactUpdate = ({
         }
       }
 
-      dispatch(addContact({ ...values, id }));
+      dispatch(updateContact({ ...values, id }));
       resetForm();
       onToggleModal();
     },
@@ -115,4 +119,9 @@ export const ContactUpdate = ({
 
 ContactUpdate.propTypes = {
   onToggleModal: PropTypes.func.isRequired,
+  contact: PropTypes.shape({
+    number: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
