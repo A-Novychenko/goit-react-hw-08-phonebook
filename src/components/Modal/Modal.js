@@ -1,39 +1,45 @@
-import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import { ModalContent, Overlay } from './Modal.styled';
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
 
-const modalRoot = document.querySelector('#modal-root');
-
-export const Modal = ({ onToggleModal, children }) => {
-  useEffect(() => {
-    const hendleESC = e => {
-      if (e.code === 'Escape') {
-        onToggleModal();
-      }
-    };
-
-    window.addEventListener('keydown', hendleESC);
-
-    return () => window.removeEventListener('keydown', hendleESC);
-  }, [onToggleModal]);
-
-  const hendleBackdrop = e => {
-    if (e.currentTarget === e.target) {
-      onToggleModal();
-    }
-  };
-
-  return createPortal(
-    <>
-      <Overlay onClick={hendleBackdrop}>
-        <ModalContent>{children}</ModalContent>
-      </Overlay>
-    </>,
-    modalRoot
-  );
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 600,
+  bgcolor: 'background.paper',
+  border: '2px solid #1976d2',
+  boxShadow: 24,
+  p: 4,
+  borderRadius: 2,
 };
 
-Modal.propTypes = {
-  onToggleModal: PropTypes.func.isRequired,
+export const TransitionsModal = ({ children, handleClose, open }) => (
+  <div>
+    <Modal
+      aria-labelledby="add-contact"
+      aria-describedby="add-contact-form"
+      open={open}
+      onClose={handleClose}
+      closeAfterTransition
+      slots={{ backdrop: Backdrop }}
+      slotProps={{
+        backdrop: {
+          timeout: 500,
+        },
+      }}
+    >
+      <Fade in={open}>
+        <Box sx={style}>{children}</Box>
+      </Fade>
+    </Modal>
+  </div>
+);
+
+TransitionsModal.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
 };
