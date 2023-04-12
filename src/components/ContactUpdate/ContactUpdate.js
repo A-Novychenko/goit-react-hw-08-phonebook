@@ -10,11 +10,6 @@ import { Avatar, Button, TextField, Box, Typography } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import CloseIcon from '@mui/icons-material/Close';
 
-const INITIAL_STATE = {
-  name: '',
-  number: '+38',
-};
-
 const Schema = Yup.object({
   name: Yup.string().max(20, 'Max: 20 symbols').required(),
   number: Yup.string()
@@ -22,12 +17,15 @@ const Schema = Yup.object({
     .required('A phone number is required'),
 });
 
-export const ContactForm = ({ onToggleModal }) => {
+export const ContactUpdate = ({
+  onToggleModal,
+  contact: { name, number, id },
+}) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
   const formik = useFormik({
-    initialValues: { ...INITIAL_STATE },
+    initialValues: { name, number },
     validationSchema: Schema,
     onSubmit: (values, { resetForm }) => {
       const { name, number } = values;
@@ -43,7 +41,7 @@ export const ContactForm = ({ onToggleModal }) => {
         }
       }
 
-      dispatch(addContact(values));
+      dispatch(addContact({ ...values, id }));
       resetForm();
       onToggleModal();
     },
@@ -74,9 +72,8 @@ export const ContactForm = ({ onToggleModal }) => {
           <PersonAddAltIcon />
         </Avatar>
         <Typography component="h2" variant="h5">
-          Add contact
+          Update contact
         </Typography>
-
         <form onSubmit={formik.handleSubmit} autoComplete="off" sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -108,7 +105,7 @@ export const ContactForm = ({ onToggleModal }) => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Add contact
+            Save
           </Button>
         </form>
       </Box>
@@ -116,6 +113,6 @@ export const ContactForm = ({ onToggleModal }) => {
   );
 };
 
-ContactForm.propTypes = {
+ContactUpdate.propTypes = {
   onToggleModal: PropTypes.func.isRequired,
 };
