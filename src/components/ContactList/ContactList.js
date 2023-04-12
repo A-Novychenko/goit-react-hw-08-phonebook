@@ -24,7 +24,6 @@ export const ContactList = () => {
   return (
     <>
       <div style={{ height: '16px' }}>
-        {/* {isLoading && <p>Loading tasks...</p>} */}
         {isLoading && <LoaderLocal />}
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
