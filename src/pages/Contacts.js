@@ -8,7 +8,7 @@ import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
 import { TransitionsModal } from 'components/Modal/Modal';
 
-export default function Contacts() {
+export default function Contacts({ handleIsSuchСontact }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -24,11 +24,14 @@ export default function Contacts() {
         <Typography ml={2}> add contact</Typography>
       </Button>
       <Filter />
-      <ContactList />
+      <ContactList handleIsSuchСontact={handleIsSuchСontact} />
 
       {open && (
         <TransitionsModal handleClose={handleClose} open={open}>
-          <ContactForm onToggleModal={handleClose} />
+          <ContactForm
+            onToggleModal={handleClose}
+            handleIsSuchСontact={handleIsSuchСontact}
+          />
         </TransitionsModal>
       )}
     </div>

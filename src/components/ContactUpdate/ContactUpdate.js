@@ -20,6 +20,7 @@ const Schema = Yup.object({
 export const ContactUpdate = ({
   onToggleModal,
   contact: { name, number, id },
+  handleIsSuchСontact,
 }) => {
   const dispatch = useDispatch();
   const { contacts } = useContacts();
@@ -40,7 +41,7 @@ export const ContactUpdate = ({
           );
 
         if (isInConntacts) {
-          alert(`${name} is already in contacts.`);
+          handleIsSuchСontact(`${name} Is already in contacts !`);
           return;
         }
       }

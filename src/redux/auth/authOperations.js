@@ -22,8 +22,7 @@ export const register = createAsyncThunk(
     } catch (err) {
       if (err.response.status === 400) {
         return rejectWithValue(
-          `All fields must be filled!
-           Use email at mail.com or gmail.com`
+          `Error creating user!  Try a different name or email`
         );
       }
       return rejectWithValue(

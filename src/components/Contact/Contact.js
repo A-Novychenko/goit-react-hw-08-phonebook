@@ -11,7 +11,7 @@ import CallIcon from '@mui/icons-material/Call';
 import { TransitionsModal } from 'components/Modal/Modal';
 import { ContactUpdate } from 'components/ContactUpdate';
 
-export const Contact = ({ name, number, id }) => {
+export const Contact = ({ name, number, id, handleIsSuchСontact }) => {
   const [isBtnActive, setIsBtnActive] = useState(false);
   const dispatch = useDispatch();
 
@@ -121,6 +121,7 @@ export const Contact = ({ name, number, id }) => {
           <ContactUpdate
             onToggleModal={handleClose}
             contact={{ name, number, id }}
+            handleIsSuchСontact={handleIsSuchСontact}
           />
         </TransitionsModal>
       )}

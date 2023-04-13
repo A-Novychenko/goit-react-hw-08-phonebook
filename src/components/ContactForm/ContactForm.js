@@ -2,7 +2,6 @@ import * as Yup from 'yup';
 import 'yup-phone-lite';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contactsOperations';
-// import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 
@@ -23,7 +22,7 @@ const Schema = Yup.object({
     .required('A phone number is required'),
 });
 
-export const ContactForm = ({ onToggleModal }) => {
+export const ContactForm = ({ onToggleModal, handleIsSuchСontact }) => {
   const dispatch = useDispatch();
   const { contacts } = useContacts();
 
@@ -39,7 +38,7 @@ export const ContactForm = ({ onToggleModal }) => {
           contacts.find(contact => contact.number === number);
 
         if (isInConntacts) {
-          alert(`${name} is already in contacts.`);
+          handleIsSuchСontact(`${name} Is already in contacts !`);
           return;
         }
       }

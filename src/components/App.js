@@ -9,7 +9,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
 import { Loader } from './Loader';
-import { SnackError, SnackSuccess } from './SnackBar/SnackBar';
+import { SnackError, SnackSuccess, SnackWarning } from './SnackBar/SnackBar';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -19,7 +19,9 @@ const ContactsPage = lazy(() => import('../pages/Contacts'));
 export const App = () => {
   const { isRefreshing, error, isLoggedIn } = useAuth();
   const { completed, errorContacts } = useContacts();
+  const [isSuchСontact, setIsSuchСontact] = useState(false);
   const [showSnackErr, setShowSnackErr] = useState(false);
+  const [showSnackWarning, setShowSnackWarning] = useState(false);
   const [showSnackCompleted, setShowSnackCompleted] = useState(false);
 
   const dispatch = useDispatch();
@@ -43,6 +45,18 @@ export const App = () => {
     if (!completed) return;
     setShowSnackCompleted(true);
   }, [completed, setShowSnackCompleted]);
+
+  useEffect(() => {
+    if (!isSuchСontact) {
+      setShowSnackWarning(false);
+      return;
+    }
+    setShowSnackWarning(true);
+  }, [isSuchСontact, setShowSnackWarning]);
+
+  const handleIsSuchСontact = text => {
+    setIsSuchСontact(text);
+  };
 
   return isRefreshing ? (
     <Loader />
@@ -74,7 +88,12 @@ export const App = () => {
           <Route
             path="/contacts"
             element={
-              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+              <PrivateRoute
+                redirectTo="/login"
+                component={
+                  <ContactsPage handleIsSuchСontact={handleIsSuchСontact} />
+                }
+              />
             }
           />
         </Route>
@@ -86,6 +105,17 @@ export const App = () => {
         handleClose={() => setShowSnackErr(false)}
         text={error || errorContacts}
       />
+
+      <SnackWarning
+        sx={{ width: '100%' }}
+        isOpen={showSnackWarning}
+        handleClose={() => {
+          setShowSnackWarning(false);
+          setIsSuchСontact(false);
+        }}
+        text={isSuchСontact}
+      />
+
       <SnackSuccess
         sx={{ width: '100%' }}
         isOpen={showSnackCompleted}

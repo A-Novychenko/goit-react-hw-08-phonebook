@@ -6,7 +6,7 @@ import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { LoaderLocal } from 'components/Loader';
 import { useContacts } from 'hooks';
 
-export const ContactList = () => {
+export const ContactList = ({ handleIsSuchСontact }) => {
   const { visibleContacts, isLoading } = useContacts();
   const dispatch = useDispatch();
 
@@ -36,7 +36,12 @@ export const ContactList = () => {
               alignItems: 'center',
             }}
           >
-            <Contact name={name} number={number} id={id}></Contact>
+            <Contact
+              name={name}
+              number={number}
+              id={id}
+              handleIsSuchСontact={handleIsSuchСontact}
+            ></Contact>
           </Box>
         ))}
       </Box>

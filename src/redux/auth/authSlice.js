@@ -49,7 +49,6 @@ const authSlice = createSlice({
       .addMatcher(
         isAnyOf(...extraActions.map(action => action.rejected)),
         (state, { payload }) => {
-          console.log('payload', payload);
           state.isLoading = false;
           state.error = payload;
         }
