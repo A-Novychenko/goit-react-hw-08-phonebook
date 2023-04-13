@@ -13,7 +13,7 @@ export const useContacts = () => {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const errorContacts = useSelector(selectError);
-  const errorCompleted = useSelector(selectCompleted);
+  const completed = useSelector(selectCompleted);
   const visibleContacts = useSelector(selectedVisibleContacts);
 
   return {
@@ -21,7 +21,7 @@ export const useContacts = () => {
     contacts,
     isLoading,
     errorContacts,
-    errorCompleted,
+    completed,
     visibleContacts,
   };
 };

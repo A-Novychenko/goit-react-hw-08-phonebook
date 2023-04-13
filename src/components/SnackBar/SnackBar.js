@@ -37,7 +37,7 @@ export const SnackError = ({ isOpen, handleClose, text }) => {
     </>
   );
 };
-export const SnackSuccess = ({ isOpen, handleClose, text }) => {
+export const SnackSuccess = ({ isOpen, handleClose }) => {
   const position = {
     vertical: 'top',
     horizontal: 'right',
@@ -51,7 +51,7 @@ export const SnackSuccess = ({ isOpen, handleClose, text }) => {
           autoHideDuration={3000}
           onClose={handleClose}
           anchorOrigin={{ ...position }}
-          message={text}
+          // message={text}
           key={position.vertical + position.horizontal}
         >
           <Alert
@@ -62,7 +62,7 @@ export const SnackSuccess = ({ isOpen, handleClose, text }) => {
             // ref={ref}
             variant="filled"
           >
-            SnackSuccess
+            Success
             {/* This is a success message! error */}
           </Alert>
         </Snackbar>

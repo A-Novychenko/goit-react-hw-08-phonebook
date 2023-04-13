@@ -40,7 +40,7 @@ export const App = () => {
   }, [error, errorContacts, isLoggedIn, setShowSnackErr]);
 
   useEffect(() => {
-    // if (!completed) return;
+    if (!completed) return;
     setShowSnackCompleted(true);
   }, [completed, setShowSnackCompleted]);
 
@@ -90,7 +90,6 @@ export const App = () => {
         sx={{ width: '100%' }}
         isOpen={showSnackCompleted}
         handleClose={() => setShowSnackCompleted(false)}
-        // text={error || errorContacts}
       />
     </>
   );

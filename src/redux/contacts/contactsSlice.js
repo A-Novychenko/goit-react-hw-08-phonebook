@@ -57,6 +57,7 @@ const contactsSlice = createSlice({
         isAnyOf(...extraActions.map(action => action.pending)),
         state => {
           state.isLoading = true;
+          state.completed = null;
         }
       )
       .addMatcher(
