@@ -20,7 +20,15 @@ export const register = createAsyncThunk(
 
       return data;
     } catch (err) {
-      return rejectWithValue(err.message);
+      if (err.response.status === 400) {
+        return rejectWithValue(
+          `All fields must be filled!
+           Use email at mail.com or gmail.com`
+        );
+      }
+      return rejectWithValue(
+        `Oops! What's broken, please try again later. Error: " ${err.message} " `
+      );
     }
   }
 );
@@ -34,7 +42,14 @@ export const logIn = createAsyncThunk(
 
       return data;
     } catch (err) {
-      return rejectWithValue(err.message);
+      if (err.response.status === 400) {
+        return rejectWithValue(
+          'User is not found! You may have entered an incorrect email address or password.'
+        );
+      }
+      return rejectWithValue(
+        `Oops! What's broken, please try again later. Error: " ${err.message} " `
+      );
     }
   }
 );
@@ -48,7 +63,14 @@ export const logOut = createAsyncThunk(
 
       return data;
     } catch (err) {
-      return rejectWithValue(err.message);
+      if (err.response.status === 401) {
+        return rejectWithValue(
+          'Something went wrong. Contact technical support: support@mail.com'
+        );
+      }
+      return rejectWithValue(
+        `Oops! What's broken, please try again later. Error: " ${err.message} " `
+      );
     }
   }
 );
@@ -65,6 +87,7 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persitedToken);
       const { data } = await axios.get('/users/current');
+
       return data;
     } catch (err) {
       return rejectWithValue(err.message);

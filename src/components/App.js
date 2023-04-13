@@ -17,7 +17,7 @@ const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const { isRefreshing, error } = useAuth();
+  const { isRefreshing, error, isLoggedIn } = useAuth();
   const [showSnack, setShowSnack] = useState(false);
 
   const dispatch = useDispatch();
@@ -26,10 +26,13 @@ export const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (typeof error === 'string') {
+    if (error && error !== 'Unable to fetch user' && !isLoggedIn) {
       setShowSnack(true);
     }
-  }, [error, setShowSnack]);
+    if (error && isLoggedIn) {
+      setShowSnack(true);
+    }
+  }, [error, isLoggedIn, setShowSnack]);
 
   console.log('error', error);
 
