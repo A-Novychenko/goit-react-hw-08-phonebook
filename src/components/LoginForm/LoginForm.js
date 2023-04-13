@@ -10,9 +10,12 @@ import {
 } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import { logIn } from 'redux/auth/authOperations';
+import { useState } from 'react';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const [isErrorMail, setIsErrorMail] = useState(null);
+  const [isErrorPass, setIsErrorPass] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -25,6 +28,25 @@ export const LoginForm = () => {
     dispatch(logIn(data));
     e.target.reset();
   };
+
+  const handleChangeEmail = e => {
+    const validMail = e.target.value.includes('mail.com');
+    const minLength = e.target.value.length > 9;
+    if (validMail && minLength) {
+      setIsErrorMail(null);
+    } else {
+      setIsErrorMail(true);
+    }
+  };
+  const handleChangePassword = e => {
+    const isValidPassword = e.target.value.length > 6;
+    if (isValidPassword) {
+      setIsErrorPass(null);
+    } else {
+      setIsErrorPass(true);
+    }
+  };
+
   return (
     <>
       <Container component="div" maxWidth="xs">
@@ -57,6 +79,9 @@ export const LoginForm = () => {
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={handleChangeEmail}
+              error={isErrorMail}
+              helperText={'Domain must match "mail.com"'}
             />
             <TextField
               margin="normal"
@@ -67,6 +92,9 @@ export const LoginForm = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleChangePassword}
+              error={isErrorPass}
+              helperText={'Password must be more than 7 characters'}
             />
             <Button
               type="submit"
