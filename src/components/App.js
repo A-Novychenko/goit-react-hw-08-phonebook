@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -9,6 +9,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
 import { Loader } from './Loader';
+import { SnackError } from './SnackBar/SnackBar';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -16,12 +17,21 @@ const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, error } = useAuth();
+  const [showSnack, setShowSnack] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (typeof error === 'string') {
+      setShowSnack(true);
+    }
+  }, [error, setShowSnack]);
+
+  console.log('error', error);
 
   return isRefreshing ? (
     <Loader />
@@ -58,6 +68,13 @@ export const App = () => {
           />
         </Route>
       </Routes>
+
+      <SnackError
+        sx={{ width: '100%' }}
+        isOpen={showSnack}
+        handleClose={() => setShowSnack(false)}
+        text={error}
+      />
     </>
   );
 };
