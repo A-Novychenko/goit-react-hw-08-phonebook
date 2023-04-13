@@ -1,5 +1,4 @@
 import { NavLink as RouterNavLink } from 'react-router-dom';
-// import css from './AuthNav.module.css';
 import Button from '@mui/material/Button';
 import { Box } from '@mui/material';
 
@@ -23,7 +22,3 @@ export const AuthNav = () => {
     </Box>
   );
 };
-
-//  <Link component={RouterLink} to="/">
-//    Link to Home
-//  </Link>;

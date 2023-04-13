@@ -6,8 +6,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './redux/store';
 
 import { App } from 'components/App';
-
 import { GlobalStyle } from 'constants/GlobalStyles';
+
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';

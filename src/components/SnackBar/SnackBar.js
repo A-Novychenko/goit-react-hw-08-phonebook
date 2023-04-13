@@ -1,4 +1,5 @@
 import { Alert, Snackbar, Stack } from '@mui/material';
+import PropTypes from 'prop-types';
 
 export const SnackError = ({ isOpen, handleClose, text }) => {
   const position = {
@@ -92,4 +93,17 @@ export const SnackWarning = ({ isOpen, handleClose, text }) => {
       </Stack>
     </>
   );
+};
+
+SnackError.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+};
+SnackSuccess.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+};
+SnackWarning.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };

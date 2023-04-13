@@ -120,6 +120,7 @@ export const ContactUpdate = ({
 
 ContactUpdate.propTypes = {
   onToggleModal: PropTypes.func.isRequired,
+  handleIsSuchСontact: PropTypes.func.isRequired,
   contact: PropTypes.shape({
     number: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import { Contact } from 'components/Contact';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
@@ -47,4 +48,8 @@ export const ContactList = ({ handleIsSuchСontact }) => {
       </Box>
     </>
   );
+};
+
+ContactList.propTypes = {
+  handleIsSuchСontact: PropTypes.func.isRequired,
 };

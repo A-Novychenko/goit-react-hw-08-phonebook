@@ -133,4 +133,5 @@ Contact.propTypes = {
   id: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  handleIsSuchСontact: PropTypes.func.isRequired,
 };

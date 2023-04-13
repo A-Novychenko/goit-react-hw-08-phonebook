@@ -118,4 +118,5 @@ export const ContactForm = ({ onToggleModal, handleIsSuchСontact }) => {
 
 ContactForm.propTypes = {
   onToggleModal: PropTypes.func.isRequired,
+  handleIsSuchСontact: PropTypes.func.isRequired,
 };

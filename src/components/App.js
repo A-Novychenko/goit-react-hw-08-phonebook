@@ -9,7 +9,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
 import { Loader } from './Loader';
-import { SnackError, SnackSuccess, SnackWarning } from './SnackBar/SnackBar';
+import { SnackError, SnackSuccess, SnackWarning } from './SnackBar';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));

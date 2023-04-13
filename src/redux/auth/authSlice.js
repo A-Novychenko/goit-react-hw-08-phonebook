@@ -1,4 +1,3 @@
-// import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { logIn, register, logOut, refreshUser } from './authOperations';
 
