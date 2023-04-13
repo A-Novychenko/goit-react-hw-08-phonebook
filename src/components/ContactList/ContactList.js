@@ -1,20 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Box } from '@mui/material';
 import { Contact } from 'components/Contact';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
-import {
-  selectError,
-  selectIsLoading,
-  selectedVisibleContacts,
-} from 'redux/contacts/contactsSelectors';
 import { LoaderLocal } from 'components/Loader';
+import { useContacts } from 'hooks';
 
 export const ContactList = () => {
-  const visibleContacts = useSelector(selectedVisibleContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
+  const { visibleContacts, isLoading } = useContacts();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,10 +16,7 @@ export const ContactList = () => {
 
   return (
     <>
-      <div style={{ height: '16px' }}>
-        {isLoading && <LoaderLocal />}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-      </div>
+      <div style={{ height: '16px' }}>{isLoading && <LoaderLocal />}</div>
 
       <Box
         component={'ul'}

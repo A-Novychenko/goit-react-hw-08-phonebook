@@ -4,12 +4,12 @@ import { useDispatch } from 'react-redux';
 
 import { Layout } from 'components/Layout';
 import { refreshUser } from 'redux/auth/authOperations';
-import { useAuth } from 'hooks';
+import { useAuth, useContacts } from 'hooks';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
 import { Loader } from './Loader';
-import { SnackError } from './SnackBar/SnackBar';
+import { SnackError, SnackSuccess } from './SnackBar/SnackBar';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -18,7 +18,9 @@ const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const { isRefreshing, error, isLoggedIn } = useAuth();
-  const [showSnack, setShowSnack] = useState(false);
+  const { completed, errorContacts } = useContacts();
+  const [showSnackErr, setShowSnackErr] = useState(false);
+  const [showSnackCompleted, setShowSnackCompleted] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,15 +28,21 @@ export const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (error && error !== 'Unable to fetch user' && !isLoggedIn) {
-      setShowSnack(true);
+    if (
+      (error && error !== 'Unable to fetch user' && !isLoggedIn) ||
+      errorContacts
+    ) {
+      setShowSnackErr(true);
     }
     if (error && isLoggedIn) {
-      setShowSnack(true);
+      setShowSnackErr(true);
     }
-  }, [error, isLoggedIn, setShowSnack]);
+  }, [error, errorContacts, isLoggedIn, setShowSnackErr]);
 
-  console.log('error', error);
+  useEffect(() => {
+    // if (!completed) return;
+    setShowSnackCompleted(true);
+  }, [completed, setShowSnackCompleted]);
 
   return isRefreshing ? (
     <Loader />
@@ -74,9 +82,15 @@ export const App = () => {
 
       <SnackError
         sx={{ width: '100%' }}
-        isOpen={showSnack}
-        handleClose={() => setShowSnack(false)}
-        text={error}
+        isOpen={showSnackErr}
+        handleClose={() => setShowSnackErr(false)}
+        text={error || errorContacts}
+      />
+      <SnackSuccess
+        sx={{ width: '100%' }}
+        isOpen={showSnackCompleted}
+        handleClose={() => setShowSnackCompleted(false)}
+        // text={error || errorContacts}
       />
     </>
   );

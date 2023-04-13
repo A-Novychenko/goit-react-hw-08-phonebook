@@ -10,6 +10,11 @@ export const fetchContacts = createAsyncThunk(
       const resp = await axios.get('/contacts');
       return resp.data;
     } catch (err) {
+      if (err.response.status === 401) {
+        return rejectWithValue(
+          'Authorization problem. Contact technical support: support@mail.com'
+        );
+      }
       return rejectWithValue(err.message);
     }
   }
@@ -22,6 +27,11 @@ export const addContact = createAsyncThunk(
       const resp = await axios.post('/contacts', { name, number });
       return resp.data;
     } catch (err) {
+      if (err.response.status === 401) {
+        return rejectWithValue(
+          'Authorization problem. Contact technical support: support@mail.com'
+        );
+      }
       return rejectWithValue(err.message);
     }
   }
@@ -34,6 +44,11 @@ export const deleteContact = createAsyncThunk(
       const resp = await axios.delete(`/contacts/${id}`);
       return resp.data;
     } catch (err) {
+      if (err.response.status === 401) {
+        return rejectWithValue(
+          'Authorization problem. Contact technical support: support@mail.com'
+        );
+      }
       return rejectWithValue(err.message);
     }
   }
@@ -45,6 +60,11 @@ export const updateContact = createAsyncThunk(
       const resp = await axios.patch(`/contacts/${id}`, { number, name });
       return resp.data;
     } catch (err) {
+      if (err.response.status === 401) {
+        return rejectWithValue(
+          'Authorization problem. Contact technical support: support@mail.com'
+        );
+      }
       return rejectWithValue(err.message);
     }
   }

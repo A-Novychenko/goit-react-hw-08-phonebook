@@ -1,14 +1,15 @@
 import * as Yup from 'yup';
 import 'yup-phone-lite';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contactsOperations';
-import { selectContacts } from 'redux/contacts/contactsSelectors';
+// import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 
 import { Avatar, Button, TextField, Box, Typography } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import CloseIcon from '@mui/icons-material/Close';
+import { useContacts } from 'hooks';
 
 const INITIAL_STATE = {
   name: '',
@@ -24,7 +25,7 @@ const Schema = Yup.object({
 
 export const ContactForm = ({ onToggleModal }) => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const { contacts } = useContacts();
 
   const formik = useFormik({
     initialValues: { ...INITIAL_STATE },

@@ -1,14 +1,14 @@
 import * as Yup from 'yup';
 import 'yup-phone-lite';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateContact } from 'redux/contacts/contactsOperations';
-import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 
 import { Avatar, Button, TextField, Box, Typography } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import CloseIcon from '@mui/icons-material/Close';
+import { useContacts } from 'hooks';
 
 const Schema = Yup.object({
   name: Yup.string().max(20, 'Max: 20 symbols').required(),
@@ -22,7 +22,7 @@ export const ContactUpdate = ({
   contact: { name, number, id },
 }) => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const { contacts } = useContacts();
 
   const formik = useFormik({
     initialValues: { name, number },

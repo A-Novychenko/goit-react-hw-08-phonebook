@@ -40,7 +40,8 @@ export const RegisterForm = () => {
   };
   const handleChangeEmail = e => {
     const validMail = e.target.value.includes('mail.com');
-    if (validMail) {
+    const minLength = e.target.value.length > 9;
+    if (validMail && minLength) {
       setIsErrorMail(null);
     } else {
       setIsErrorMail(true);

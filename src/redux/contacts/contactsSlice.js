@@ -14,6 +14,7 @@ const contactsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    completed: null,
   },
   extraReducers: builder =>
     builder
@@ -26,10 +27,12 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items.push(payload);
+        state.completed = true;
       })
       .addCase(deleteContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.completed = true;
         state.items.splice(
           state.items.findIndex(contact => contact.id === payload.id),
           1
@@ -38,6 +41,7 @@ const contactsSlice = createSlice({
       .addCase(updateContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.completed = true;
         state.items[
           state.items.findIndex(contact => contact.id === payload.id)
         ] = { ...payload };
