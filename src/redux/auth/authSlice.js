@@ -17,31 +17,24 @@ const authSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      // .addCase(register.pending, state => {
-      //   state.error = null;
-      // })
+
       .addCase(register.fulfilled, (state, { payload: { user, token } }) => {
         state.user = user;
         state.token = token;
         state.isLoggedIn = true;
         state.error = null;
       })
-      // .addCase(logIn.pending, state => {
-      //   state.error = null;
-      // })
+
       .addCase(logIn.fulfilled, (state, { payload: { user, token } }) => {
         state.user = user;
         state.token = token;
         state.isLoggedIn = true;
         state.error = null;
       })
-      // .addCase(logOut.pending, state => {
-      //   state.error = null;
-      // })
+
       .addCase(logOut.fulfilled, () => initialState)
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
-        // state.error = null;
       })
 
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
