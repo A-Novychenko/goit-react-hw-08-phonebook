@@ -60,7 +60,7 @@ export const logOut = createAsyncThunk(
       await axios.post('/users/logout');
       clearAuthHeader();
 
-      return data;
+      return;
     } catch (err) {
       if (err.response.status === 401) {
         return rejectWithValue(
